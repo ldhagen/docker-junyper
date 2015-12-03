@@ -34,7 +34,7 @@ RUN set -x \
     && python -m ensurepip \
     && pip install pip --upgrade \
     && pip install virtualenv --upgrade \
-    && pip install ipython[all] --upgrade \
+    && pip install jupyter[all] --upgrade \
     && pip install matplotlib --upgrade \
     && pip install Pillow --upgrade \
     && rm -rf /root/cpython/.hg \
