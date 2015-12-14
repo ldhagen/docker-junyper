@@ -14,7 +14,7 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential pkg-config apt-utils libncurses-dev libreadline-dev sqlite3 && \
   apt-get install -y git wget mercurial libssl-dev libfreetype6-dev libxft-dev libsqlite3-dev openssl && \
-  apt-get install -y libjpeg-dev 
+  apt-get install -y libjpeg-dev liblapack-dev gfortran
 
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
 
@@ -25,6 +25,7 @@ ENV HOME /root
 WORKDIR /root
 
 RUN hg clone https://hg.python.org/cpython -r v2.7.10
+RUN git clone https://github.com/dimart/pokemon_recognition.git
 
 RUN set -x \
     && cd /root/cpython/ \
@@ -37,10 +38,13 @@ RUN set -x \
     && pip install jupyter[all] --upgrade \
     && pip install matplotlib --upgrade \
     && pip install Pillow --upgrade \
+    && pip install SciPy --upgrade \
+    && pip install sklearn --upgrade \
+    && pip install bunch --upgrade \
     && rm -rf /root/cpython/.hg \
     && cd /root/
  
 EXPOSE 8888
 
 # Define default command.
-CMD ["/usr/local/bin/ipython notebook --no-browser --port 8888 --ip=*"]
+#CMD ["/usr/local/bin/jupyter notebook --no-browser --port 8888 --ip=*"]
