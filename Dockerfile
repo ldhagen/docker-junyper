@@ -17,6 +17,7 @@ RUN \
   apt-get install -y libjpeg-dev liblapack-dev gfortran
 
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
+ADD ./Pokemon.ipynb /root/Pokemon.ipynb
 
 # Set environment variables.
 ENV HOME /root
