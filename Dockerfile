@@ -18,6 +18,7 @@ RUN \
 
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
 ADD ./Pokemon.ipynb /root/Pokemon.ipynb
+ADD ./skimage_examples.ipynb /root/skimage_examples.ipynb
 
 # Set environment variables.
 ENV HOME /root
