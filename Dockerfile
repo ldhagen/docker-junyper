@@ -14,7 +14,7 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential pkg-config apt-utils libncurses-dev libreadline-dev sqlite3 && \
   apt-get install -y git wget mercurial libssl-dev libfreetype6-dev libxft-dev libsqlite3-dev openssl && \
-  apt-get install -y libjpeg-dev liblapack-dev gfortran
+  apt-get install -y libjpeg-dev liblapack-dev gfortran python-opencv
 
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
 ADD ./Pokemon.ipynb /root/Pokemon.ipynb
@@ -26,7 +26,7 @@ ENV HOME /root
 # Define working directory.
 WORKDIR /root
 
-RUN hg clone https://hg.python.org/cpython -r v2.7.10
+RUN hg clone https://hg.python.org/cpython -r v2.7.11
 RUN git clone https://github.com/dimart/pokemon_recognition.git
 
 RUN set -x \
