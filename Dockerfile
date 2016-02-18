@@ -19,6 +19,7 @@ RUN \
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
 ADD ./Pokemon.ipynb /root/Pokemon.ipynb
 ADD ./skimage_examples.ipynb /root/skimage_examples.ipynb
+ADD ./OpenCV.ipynb /root/OpenCV.ipynb
 
 # Set environment variables.
 ENV HOME /root
@@ -44,6 +45,7 @@ RUN set -x \
     && pip install sklearn --upgrade \
     && pip install bunch --upgrade \
     && rm -rf /root/cpython/.hg \
+    && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
     && cd /root/
  
 EXPOSE 8888
