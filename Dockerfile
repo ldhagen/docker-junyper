@@ -47,8 +47,16 @@ RUN set -x \
     && rm -rf /root/cpython/.hg \
     && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
     && cd /root/
+
+# From http://jupyter-notebook.readthedocs.org/en/latest/public_server.html
+# Add Tini. Tini operates as a process subreaper for jupyter. This prevents
+# kernel crashes.
+ENV TINI_VERSION v0.9.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+RUN chmod +x /usr/bin/tini
+ENTRYPOINT ["/usr/bin/tini", "--"]
  
 EXPOSE 8888
 
 # Define default command.
-#CMD ["/usr/local/bin/jupyter notebook --no-browser --port 8888 --ip=*"]
+CMD ["/usr/local/bin/jupyter", "notebook", "--no-browser", "--port=8888", "--ip=*"]
