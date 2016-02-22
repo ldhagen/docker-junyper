@@ -20,6 +20,7 @@ ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
 ADD ./Pokemon.ipynb /root/Pokemon.ipynb
 ADD ./skimage_examples.ipynb /root/skimage_examples.ipynb
 ADD ./OpenCV.ipynb /root/OpenCV.ipynb
+ADD ./OpenCV_Recognize.ipynb /root/OpenCV_Recognize.ipynb
 
 # Set environment variables.
 ENV HOME /root
