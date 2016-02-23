@@ -1,4 +1,3 @@
-Words_Letters_Recognize.ipynb#
 # Ubuntu Dockerfile
 #
 # https://github.com/dockerfile/ubuntu
