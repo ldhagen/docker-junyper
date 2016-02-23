@@ -48,6 +48,7 @@ ADD ./skimage_examples.ipynb /root/skimage_examples.ipynb
 ADD ./OpenCV.ipynb /root/OpenCV.ipynb
 ADD ./OpenCV_Recognize.ipynb /root/OpenCV_Recognize.ipynb
 ADD ./Words_Letters_Recognize.ipynb /root/Words_Letters_Recognize.ipynb
+ADD ./Screenshot_2016-02-23-12-47-43.png /root/Screenshot_2016-02-23-12-47-43.png
 
 # From http://jupyter-notebook.readthedocs.org/en/latest/public_server.html
 # Add Tini. Tini operates as a process subreaper for jupyter. This prevents
