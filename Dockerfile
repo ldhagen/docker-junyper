@@ -1,4 +1,4 @@
-#
+Words_Letters_Recognize.ipynb#
 # Ubuntu Dockerfile
 #
 # https://github.com/dockerfile/ubuntu
@@ -15,12 +15,6 @@ RUN \
   apt-get install -y build-essential pkg-config apt-utils libncurses-dev libreadline-dev sqlite3 && \
   apt-get install -y git wget mercurial libssl-dev libfreetype6-dev libxft-dev libsqlite3-dev openssl && \
   apt-get install -y libjpeg-dev liblapack-dev gfortran python-opencv
-
-ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
-ADD ./Pokemon.ipynb /root/Pokemon.ipynb
-ADD ./skimage_examples.ipynb /root/skimage_examples.ipynb
-ADD ./OpenCV.ipynb /root/OpenCV.ipynb
-ADD ./OpenCV_Recognize.ipynb /root/OpenCV_Recognize.ipynb
 
 # Set environment variables.
 ENV HOME /root
@@ -48,6 +42,13 @@ RUN set -x \
     && rm -rf /root/cpython/.hg \
     && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
     && cd /root/
+
+ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
+ADD ./Pokemon.ipynb /root/Pokemon.ipynb
+ADD ./skimage_examples.ipynb /root/skimage_examples.ipynb
+ADD ./OpenCV.ipynb /root/OpenCV.ipynb
+ADD ./OpenCV_Recognize.ipynb /root/OpenCV_Recognize.ipynb
+ADD ./Words_Letters_Recognize.ipynb /root/Words_Letters_Recognize.ipynb
 
 # From http://jupyter-notebook.readthedocs.org/en/latest/public_server.html
 # Add Tini. Tini operates as a process subreaper for jupyter. This prevents
