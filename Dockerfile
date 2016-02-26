@@ -37,6 +37,7 @@ RUN set -x \
     && pip install Pillow --upgrade \
     && pip install SciPy --upgrade \
     && pip install sklearn --upgrade \
+    && pip install scikit-image --upgrade \
     && pip install bunch --upgrade \
     && rm -rf /root/cpython/.hg \
     && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
