@@ -13,7 +13,7 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential pkg-config apt-utils libncurses-dev libreadline-dev sqlite3 && \
   apt-get install -y git wget mercurial libssl-dev libfreetype6-dev libxft-dev libsqlite3-dev openssl && \
-  apt-get install -y libjpeg-dev liblapack-dev gfortran python-opencv
+  apt-get install -y libjpeg-dev liblapack-dev gfortran python-opencv libbz2-dev
 
 # Set environment variables.
 ENV HOME /root
@@ -38,6 +38,7 @@ RUN set -x \
     && pip install SciPy --upgrade \
     && pip install sklearn --upgrade \
     && pip install bunch --upgrade \
+    && pip install scikit-image --upgrade \
     && rm -rf /root/cpython/.hg \
     && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
     && cd /root/
