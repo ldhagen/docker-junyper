@@ -13,7 +13,9 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential pkg-config apt-utils libncurses-dev libreadline-dev sqlite3 && \
   apt-get install -y git wget mercurial libssl-dev libfreetype6-dev libxft-dev libsqlite3-dev openssl && \
-  apt-get install -y libjpeg-dev liblapack-dev gfortran python-opencv libbz2-dev
+  apt-get install -y libjpeg-dev liblapack-dev gfortran python-opencv libbz2-dev && \
+  apt-get install -y cmake libjpeg8-dev libtiff4-dev libjasper-dev libpng12-dev libgtk2.0-dev && \
+  apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libatlas-base-dev gfortran
 
 # Set environment variables.
 ENV HOME /root
@@ -23,6 +25,7 @@ WORKDIR /root
 
 RUN hg clone https://hg.python.org/cpython -r v2.7.11
 RUN git clone https://github.com/dimart/pokemon_recognition.git
+RUN git clone https://github.com/Itseez/opencv.git
 
 # see http://stackoverflow.com/questions/22157184/strange-python-compilation-results-with-enable-shared-flag for LD_RUN_PATH logic with fixes bug related to --enable-shared below
 
@@ -43,7 +46,15 @@ RUN set -x \
     && pip install scikit-image --upgrade \
     && rm -rf /root/cpython/.hg \
     && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
-    && cd /root/
+    && cd /root/opencv/ \
+    && git checkout 3.1.0 \
+    && mkdir build \
+    && cd build \
+    && cmake -D WITH_FFMPEG=OFF ..\
+    && make -j6 \
+    && make install \
+    && ldconfig \
+    && cd /root
 
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
 ADD ./Pokemon.ipynb /root/Pokemon.ipynb
