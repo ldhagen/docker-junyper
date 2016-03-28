@@ -26,6 +26,7 @@ WORKDIR /root
 RUN hg clone https://hg.python.org/cpython -r v2.7.11
 RUN git clone https://github.com/dimart/pokemon_recognition.git
 RUN git clone https://github.com/Itseez/opencv.git
+RUN git clone https://github.com/Itseez/opencv_contrib.git
 
 # see http://stackoverflow.com/questions/22157184/strange-python-compilation-results-with-enable-shared-flag for LD_RUN_PATH logic with fixes bug related to --enable-shared below
 
@@ -46,11 +47,13 @@ RUN set -x \
     && pip install scikit-image --upgrade \
     && rm -rf /root/cpython/.hg \
     && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
+    && cd /root/opencv_contrib/ \
+    && git checkout 3.1.0 \
     && cd /root/opencv/ \
     && git checkout 3.1.0 \
     && mkdir build \
     && cd build \
-    && cmake -D WITH_FFMPEG=OFF ..\
+    && cmake -D OPENCV_EXTRA_MODULES_PATH=/root/opencv_contrib/modules -D WITH_FFMPEG=OFF ..\
     && make -j6 \
     && make install \
     && ldconfig \
