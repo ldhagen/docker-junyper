@@ -67,6 +67,8 @@ ADD ./OpenCV_Recognize.ipynb /root/OpenCV_Recognize.ipynb
 ADD ./Words_Letters_Recognize.ipynb /root/Words_Letters_Recognize.ipynb
 ADD ./Screenshot_2016-02-23-12-47-43.png /root/Screenshot_2016-02-23-12-47-43.png
 ADD ./SciKit-Image.ipynb /root/SciKit-Image.ipynb
+ADD ./HighLevelGraphicsJupyter.ipynb /root/HighLevelGraphicsJupyter.ipynb
+ADD ./Ipython_core_debug_Trace.ipynb /root/Ipython_core_debug_Trace.ipynb
 
 # From http://jupyter-notebook.readthedocs.org/en/latest/public_server.html
 # Add Tini. Tini operates as a process subreaper for jupyter. This prevents
