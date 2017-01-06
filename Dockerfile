@@ -23,10 +23,11 @@ ENV HOME /root
 # Define working directory.
 WORKDIR /root
 
-RUN hg clone https://hg.python.org/cpython -r v2.7.11
+RUN hg clone https://hg.python.org/cpython -r v2.7.13
 RUN git clone https://github.com/dimart/pokemon_recognition.git
 RUN git clone https://github.com/Itseez/opencv.git
 RUN git clone https://github.com/Itseez/opencv_contrib.git
+RUN wget https://raw.githubusercontent.com/kuleshov/cs228-material/master/tutorials/python/cs228-python-tutorial.ipynb
 
 # see http://stackoverflow.com/questions/22157184/strange-python-compilation-results-with-enable-shared-flag for LD_RUN_PATH logic with fixes bug related to --enable-shared below
 
