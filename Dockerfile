@@ -70,6 +70,7 @@ ADD ./Screenshot_2016-02-23-12-47-43.png /root/Screenshot_2016-02-23-12-47-43.pn
 ADD ./SciKit-Image.ipynb /root/SciKit-Image.ipynb
 ADD ./HighLevelGraphicsJupyter.ipynb /root/HighLevelGraphicsJupyter.ipynb
 ADD ./Ipython_core_debug_Trace.ipynb /root/Ipython_core_debug_Trace.ipynb
+ADD ./Quandl_and_csv.ipynb /root/Quandl_and_csv.ipynb
 
 # From http://jupyter-notebook.readthedocs.org/en/latest/public_server.html
 # Add Tini. Tini operates as a process subreaper for jupyter. This prevents
