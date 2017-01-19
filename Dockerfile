@@ -23,7 +23,7 @@ ENV HOME /root
 # Define working directory.
 WORKDIR /root
 
-RUN hg clone https://hg.python.org/cpython -r v2.7.13
+RUN hg clone https://hg.python.org/cpython
 RUN git clone https://github.com/dimart/pokemon_recognition.git
 RUN git clone https://github.com/Itseez/opencv.git
 RUN git clone https://github.com/Itseez/opencv_contrib.git
@@ -33,6 +33,7 @@ RUN wget https://raw.githubusercontent.com/kuleshov/cs228-material/master/tutori
 
 RUN set -x \
     && cd /root/cpython/ \
+    && hg checkout -r v2.7.13 \
     && ./configure --enable-shared \
     && LD_RUN_PATH=/usr/local/lib make \
     && make install \
@@ -45,8 +46,9 @@ RUN set -x \
     && pip install SciPy --upgrade \
     && pip install sklearn --upgrade \
     && pip install bunch --upgrade \
-    && pip install scikit-image --upgrade \
-    && rm -rf /root/cpython/.hg \
+    && pip install scikit-image --upgrade
+#    && rm -rf /root/cpython/.hg \
+RUN set -x \
     && ln -s /usr/lib/python2.7/dist-packages/cv2.so /usr/local/lib/python2.7/site-packages/ \
     && cd /root/opencv_contrib/ \
     && git checkout 3.1.0 \
@@ -57,7 +59,18 @@ RUN set -x \
     && cmake -D OPENCV_EXTRA_MODULES_PATH=/root/opencv_contrib/modules -D WITH_FFMPEG=OFF ..\
     && make -j6 \
     && make install \
-    && ldconfig \
+    && ldconfig 
+RUN set -x \
+    && cd /root/cpython/ \
+    && hg checkout -r v3.6.0 \
+    && make clean \
+    && ./configure --enable-shared \
+    && cp Modules/Setup.dist Modules/Setup \ 
+    && make touch \
+    && LD_RUN_PATH=/usr/local/lib make \
+    && make install \
+    && pip3 install jupyter \
+    && ipython3 kernelspec install-self \
     && cd /root
 
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
