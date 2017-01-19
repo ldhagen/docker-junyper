@@ -70,8 +70,17 @@ RUN set -x \
     && LD_RUN_PATH=/usr/local/lib make \
     && make install \
     && pip3 install jupyter \
-    && ipython3 kernelspec install-self \
+    && python2 -m pip install ipykernel \
+    && python2 -m ipykernel install --user \
+    && python3 -m pip install ipykernel \
+    && python3 -m ipykernel install --user \
     && cd /root
+
+#from http://www.kdnuggets.com/2016/04/top-10-ipython-nb-tutorials.html
+
+RUN git clone https://github.com/jakevdp/sklearn_tutorial.git \
+    && git clone https://github.com/masinoa/machine_learning.git \
+    && git clone https://github.com/craffel/theano-tutorial.git
 
 ADD ./PhotoTest.ipynb /root/PhotoTest.ipynb
 ADD ./Pokemon.ipynb /root/Pokemon.ipynb
