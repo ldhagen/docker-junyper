@@ -1,2 +1,2 @@
 # docker-jupyter
-Docker ipython notebook in progress
+Docker ipython notebook updating
