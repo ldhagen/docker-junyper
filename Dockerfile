@@ -105,4 +105,4 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 EXPOSE 8888
 
 # Define default command.
-CMD ["/usr/local/bin/jupyter", "notebook", "--no-browser", "--port=8888", "--ip=*"]
+CMD ["/usr/local/bin/jupyter", "notebook", "--allow-root", "--no-browser", "--port=8888", "--ip=*"]
